@@ -1,5 +1,5 @@
 {
-  "name": "react-redux-toaster",
+  "name": "re-toaster",
   "version": "0.0.1",
   "description": "React Redux Toaster Component",
   "main": "lib/index.js",
@@ -65,6 +65,7 @@
   },
   "dependencies": {
     "axios": "^0.15.3",
+    "deepmerge": "^1.5.0",
     "prop-types": "^15.5.10",
     "react": "^15.4.2",
     "react-redux": "^5.0.5",

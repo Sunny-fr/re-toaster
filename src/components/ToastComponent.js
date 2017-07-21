@@ -1,10 +1,10 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import {removeToast} from "../actions/toasterActions"
-import theme from './ToasterTheme'
+import baseTheme from './ToasterTheme'
+import deepmerge from 'deepmerge'
 
-const TOAST_DELAY = 2500
-const ANIMATION_DELAY = 500
+
 
 const TOAST_ICON_MAP = {
     success: 'fa fa-check',
@@ -12,21 +12,21 @@ const TOAST_ICON_MAP = {
     info: 'fa fa-info-circle'
 }
 
+
 class ToastComponent extends Component {
     constructor() {
         super()
-        this.state = {
-            status: 'idle'
-        }
+        this.state = {status: 'idle'}
     }
 
-    getMarkup() {
-        return this.props.message
+    getTheme (){
+        return deepmerge(baseTheme, this.props.theme)
     }
 
     render() {
         const {status} = this.state
-        const {type, icon, className, idx, toBeRemoved} = this.props
+        const {type, icon, className, idx, message, toBeRemoved} = this.props
+        const theme = this.getTheme()
         const toastClassName = type
         let iconClass = icon || TOAST_ICON_MAP[type]
         let css = (toBeRemoved ? 'fadeOutDown' : 'fadeInUp') + " " + toastClassName + " " + className
@@ -41,27 +41,21 @@ class ToastComponent extends Component {
                 <i className={iconClass}/>
             </div>
             <div style={theme.messageContainer}>
-                <p style={theme.message} dangerouslySetInnerHTML={{__html: this.getMarkup()}}/>
+                <p style={theme.message} children={message}/>
             </div>
         </div>)
     }
 
     componentDidMount() {
-        setTimeout(() => {
-            this.setState({status: 'opening'})
-        }, 20)
-        setTimeout(() => {
-            this.setState({status: 'closing'})
-        }, TOAST_DELAY - ANIMATION_DELAY)
-        setTimeout(() => {
-            this.props.dispatch(removeToast(this.props.id))
-        }, TOAST_DELAY)
+        const  {delay, animationDelay} = this.getTheme()
+        setTimeout(() => this.setState({status: 'opening'}), 20)
+        setTimeout(() => this.setState({status: 'closing'}), delay - animationDelay)
+        setTimeout(() => this.props.dispatch(removeToast(this.props.id)), delay)
     }
 
 }
 
-ToastComponent
-    .propTypes = {
+ToastComponent.propTypes = {
     idx: PropTypes.number,
     icon: PropTypes.string,
     message: PropTypes.string,
@@ -69,8 +63,7 @@ ToastComponent
     className: PropTypes.string
 };
 
-ToastComponent
-    .defaultProps = {
+ToastComponent.defaultProps = {
     idx: 1,
     icon: 'info',
     message: 'Hello',
