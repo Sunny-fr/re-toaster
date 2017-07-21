@@ -4,6 +4,8 @@ const icon_message_commons = {
     lineHeight: '60px',
 }
 const theme = {
+    delay: 2500,
+    animationDelay: 400,
     container: {
         padding: 0,
         backgroundColor: '#333',
