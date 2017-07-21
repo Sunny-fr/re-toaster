@@ -28,6 +28,9 @@ class ExampleComponent extends Component {
     toastInfo = () => {
         this.props.dispatch(addToast({type: 'info', message: 'info message'}))
     }
+    toastCustom = () => {
+        this.props.dispatch(addToast({type: 'customToast', message: 'custom toast message'}))
+    }
 
     render() {
         return (<div className="text-center">
@@ -37,6 +40,7 @@ class ExampleComponent extends Component {
             <button style={buttonStyle} className="btn btn-danger" onClick={this.toastDanger}>Toast'hop !</button>
             <button style={buttonStyle} className="btn btn-warning" onClick={this.toastWarning}>Toast'hop !</button>
             <button style={buttonStyle} className="btn btn-info" onClick={this.toastInfo}>Toast'hop !</button>
+            <button style={{...buttonStyle, backgroundColor: '#b35f9e'}} className="btn btn-info" onClick={this.toastCustom}>Toast'hop !</button>
 
 
         </div>)
@@ -45,12 +49,23 @@ class ExampleComponent extends Component {
 
 const Example = connect()(ExampleComponent)
 
+//optional
+const myCustomTheme = {
+    delay: 2500,
+    animationDelay: 400,
+    container: {
+        transition: `transform 400ms ease-out, visibility 400ms ease-out, opacity 400ms ease-out, top 400ms ease-out`
+    },
+    containerColors: {
+        customToast: {backgroundColor: '#b35f9e'},
+    }
+}
 
 function App() {
     return (
         <Provider store={store}>
             <Application>
-                <ToasterComponent/>
+                <ToasterComponent theme={myCustomTheme}/>
                 <Example/>
             </Application>
         </Provider>
