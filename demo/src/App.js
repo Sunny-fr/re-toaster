@@ -1,17 +1,19 @@
-import React, {Component} from 'react';
+import React, {Component} from 'react'
 
 /** REDUX **/
 import {Provider} from 'react-redux'
 import store from './store'
 import Application from './layout/ApplicationLayout'
-import {ToasterComponent, addToast} from '../../lib'
+import {ToasterComponent, addToast} from 're-toaster'
 import {connect} from 'react-redux'
+import Piano from './components/piano/Piano'
+import Title from './layout/components/title/Title'
 
 
 const buttonStyle = {
     lineHeight: '40px',
     margin: 3,
-    borderRadius: 3
+    borderRadius: 3,
 }
 
 
@@ -29,18 +31,41 @@ class ExampleComponent extends Component {
         this.props.dispatch(addToast({type: 'info', message: 'info message'}))
     }
     toastCustom = () => {
-        this.props.dispatch(addToast({type: 'customToast', message: 'custom toast message'}))
+        this.props.dispatch(addToast({type: 'customToast', icon: 'fa fa-robot', message: 'custom toast message'}))
+    }
+
+    rainbow = (fn) => {
+        this.rainbowInterval = setInterval(fn, 40)
+    }
+    rainbowOver = () => {
+        if (this.rainbowInterval) {
+            clearInterval(this.rainbowInterval)
+        }
+    }
+
+    rainbowToast = (fn) => {
+        this.rainbow(fn)
     }
 
     render() {
-        return (<div className="text-center">
-            <h1>Hello Toasts !</h1>
 
-            <button style={buttonStyle} className="btn btn-success" onClick={this.toastSuccess}>Toast'hop !</button>
-            <button style={buttonStyle} className="btn btn-danger" onClick={this.toastDanger}>Toast'hop !</button>
-            <button style={buttonStyle} className="btn btn-warning" onClick={this.toastWarning}>Toast'hop !</button>
-            <button style={buttonStyle} className="btn btn-info" onClick={this.toastInfo}>Toast'hop !</button>
-            <button style={{...buttonStyle, backgroundColor: '#b35f9e'}} className="btn btn-info" onClick={this.toastCustom}>Toast'hop !</button>
+        return (<div className="text-center">
+            <button style={buttonStyle} onMouseEnter={() => this.rainbowToast(this.toastSuccess)}
+                    onMouseLeave={this.rainbowOver} className="btn btn-success" onClick={this.toastSuccess}>Toast'hop !
+            </button>
+            <button style={buttonStyle} onMouseEnter={() => this.rainbowToast(this.toastDanger)}
+                    onMouseLeave={this.rainbowOver} className="btn btn-danger" onClick={this.toastDanger}>Toast'hop !
+            </button>
+            <button style={buttonStyle} onMouseEnter={() => this.rainbowToast(this.toastWarning)}
+                    onMouseLeave={this.rainbowOver} className="btn btn-warning" onClick={this.toastWarning}>Toast'hop !
+            </button>
+            <button style={buttonStyle} onMouseEnter={() => this.rainbowToast(this.toastInfo)}
+                    onMouseLeave={this.rainbowOver} className="btn btn-info" onClick={this.toastInfo}>Toast'hop !
+            </button>
+            <button style={{...buttonStyle, backgroundColor: '#b35f9e'}}
+                    onMouseEnter={() => this.rainbowToast(this.toastCustom)} onMouseLeave={this.rainbowOver}
+                    className="btn btn-info" onClick={this.toastCustom}>Toast'hop !
+            </button>
 
 
         </div>)
@@ -57,7 +82,10 @@ const myCustomTheme = {
         transition: `transform 400ms ease-out, visibility 400ms ease-out, opacity 400ms ease-out, top 400ms ease-out`
     },
     containerColors: {
-        customToast: {backgroundColor: '#b35f9e'},
+        customToast: {
+            backgroundColor: '#b35f9e',
+            right: 100
+        },
     }
 }
 
@@ -66,10 +94,13 @@ function App() {
         <Provider store={store}>
             <Application>
                 <ToasterComponent theme={myCustomTheme}/>
+                <Title>Hello Toasts !</Title>
+
                 <Example/>
+                <Piano/>
             </Application>
         </Provider>
-    );
+    )
 }
 
-export default App;
+export default App

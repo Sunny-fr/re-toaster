@@ -28,7 +28,7 @@ class ToastComponent extends Component {
         const {type, icon, className, idx, message, toBeRemoved} = this.props
         const theme = this.getTheme()
         const toastClassName = type
-        let iconClass = icon || TOAST_ICON_MAP[type]
+        let iconClass = type && TOAST_ICON_MAP[type] ? TOAST_ICON_MAP[type] : icon
         let css = (toBeRemoved ? 'fadeOutDown' : 'fadeInUp') + " " + toastClassName + " " + className
         let style = {
             ...theme.container,
