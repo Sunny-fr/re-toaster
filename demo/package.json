@@ -1,6 +1,7 @@
 {
   "name": "demo2",
   "version": "0.1.0",
+  "homepage": "/re-toaster",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",

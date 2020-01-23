@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {Component, PureComponent, useState} from 'react'
 
 /** REDUX **/
 import {Provider} from 'react-redux'
@@ -8,6 +8,7 @@ import {ToasterComponent, addToast} from 're-toaster'
 import {connect} from 'react-redux'
 import Piano from './components/piano/Piano'
 import Title from './layout/components/title/Title'
+import CheckBox from './layout/components/checkbox/CheckBox'
 
 
 const buttonStyle = {
@@ -17,7 +18,11 @@ const buttonStyle = {
 }
 
 
-class ExampleComponent extends Component {
+
+class ExampleComponent extends PureComponent {
+    state = {
+        checked: false
+    }
     toastSuccess = () => {
         this.props.dispatch(addToast({type: 'success', message: 'success message'}))
     }
@@ -44,7 +49,9 @@ class ExampleComponent extends Component {
     }
 
     rainbowToast = (fn) => {
-        this.rainbow(fn)
+        if (this.state.checked) {
+            this.rainbow(fn)
+        }
     }
 
     render() {
@@ -66,6 +73,8 @@ class ExampleComponent extends Component {
                     onMouseEnter={() => this.rainbowToast(this.toastCustom)} onMouseLeave={this.rainbowOver}
                     className="btn btn-info" onClick={this.toastCustom}>Toast'hop !
             </button>
+
+            <CheckBox checked={this.state.checked} toggle={(status) => this.setState({checked: status})} />
 
 
         </div>)
