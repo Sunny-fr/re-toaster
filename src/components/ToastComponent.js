@@ -8,7 +8,7 @@ import deepmerge from 'deepmerge'
 
 const TOAST_ICON_MAP = {
     success: 'fa fa-check',
-    error: 'fa fa-times',
+    error: 'fa fa-exclamation-triangle',
     info: 'fa fa-info-circle'
 }
 

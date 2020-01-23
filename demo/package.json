@@ -9,7 +9,7 @@
     "@testing-library/user-event": "^7.1.2",
     "bootstrap": "^3.3.7",
     "node-sass": "^4.13.1",
-    "re-toaster": "^1.0.0",
+    "re-toaster": "^1.0.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-redux": "^5.0.2",

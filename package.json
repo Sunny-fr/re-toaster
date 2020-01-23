@@ -1,6 +1,6 @@
 {
   "name": "re-toaster",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "React Redux Toaster Component",
   "main": "lib/index.js",
   "scripts": {
@@ -69,6 +69,7 @@
     "prop-types": "^15.5.10",
     "react": "^15.4.2",
     "react-redux": "^5.0.5",
-    "redux": "^3.7.2"
+    "redux": "^3.7.2",
+    "re-toaster": "latest"
   }
 }

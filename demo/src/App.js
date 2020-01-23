@@ -1,4 +1,4 @@
-import React, {Component, PureComponent, useState} from 'react'
+import React, {PureComponent} from 'react'
 
 /** REDUX **/
 import {Provider} from 'react-redux'
