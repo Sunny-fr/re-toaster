@@ -2,5 +2,5 @@
 
 React Redux Toaster Component
 
-demo : http://toolbox.sunny.fr/re-toaster/
+demo : https://toolbox.sunny.fr/re-toaster/
 
