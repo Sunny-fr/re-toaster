@@ -1,13 +1,15 @@
 import { applyMiddleware, createStore, compose, combineReducers } from "redux"
 import thunk from "redux-thunk"
 import promise from "redux-promise-middleware"
+import {toaster} from 're-toaster'
 
-import {toaster} from '../../lib'
+
 
 const middleware = applyMiddleware(
     promise(),
     thunk
 )
+
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 

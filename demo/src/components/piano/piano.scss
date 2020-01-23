@@ -1,0 +1,117 @@
+$key-width: 40px;
+$back-key-width: 30px;
+$key-margin: 3px;
+.piano-wrapper {
+  margin: 50px auto;
+  padding: 20px;
+  perspective: 800px;
+  display: inline-block;
+  transform-style: preserve-3d;
+  perspective-origin: 50% 50%;
+  justify-content: center;
+}
+.piano {
+  height: 500px;
+  width: 500px;
+  position: relative;
+  perspective: 800px;
+  perspective-origin: 50% 50%;
+  transform-style: preserve-3d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &:before{
+    z-index: -1;
+    position: absolute;
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 5px dashed #CCC;
+    border-radius: 5px;
+    transform: translateZ(-50px);
+  }
+}
+.piano-orientation-listener {
+  display: inline-block;
+}
+.piano-keys {
+  display: flex;
+  justify-content: center;
+  transform-style: preserve-3d;
+  transform: translateZ(30px) translateY(50px);
+}
+.piano-key {
+  width: $key-width;
+  background-color: #FFF;
+  border-radius: 3px;
+  height: 200px;
+  margin: $key-margin;
+  position: relative;
+  cursor: pointer;
+  transition: transform ease-out 100ms, box-shadow ease-out 100ms, opacity ease-out 100ms;
+  box-shadow: 0 3px 3px rgba(0,0,0,.2);
+  transform-origin: 50% 0;
+  transform-style: preserve-3d;
+
+  &.key-pressed {
+    transform: rotateX(-5deg);
+    box-shadow: 0 1px 1px rgba(0,0,0,.2);
+    &:before{
+      opacity: 1;
+    }
+  }
+  &:before{
+    $offset: 0px;
+    opacity: 0;
+    display: block;
+    position: absolute;
+    top: $offset;
+    left: $offset;
+    right: $offset;
+    bottom: $offset;
+    border-radius: 3px;
+    content: "";
+    z-index: 1;
+    //linear-gradient(90deg, rgba(0,0,0,0), rgba(0,0,0,.1)),
+    transition:  opacity ease-out 100ms;
+    background: linear-gradient(rgba(0,0,0,0) 20%, rgba(0,0,0,.1) 100%)
+  ;
+  }
+
+  &:after{
+    $offset: 3px;
+    display: block;
+    z-index: 1;
+    position: absolute;
+    top: $offset;
+    left: $offset;
+    right: $offset;
+    bottom: $offset;
+    border-radius: 3px;
+    content: "";
+    background-color: rgba(0,0,0,.07);
+    box-shadow: 0 0 10px rgba(0,0,0,.1);
+  }
+
+
+}
+.black-key-placeholder {
+  position: relative;
+}
+.black-key {
+  position: absolute;
+  width:$back-key-width ;
+  left: (-$back-key-width / 2) - $key-margin;
+  background-color: #111;
+  height: 130px;
+  z-index: 1;
+  transform: translateZ(20px);
+  &.key-pressed {
+    transform: translateZ(20px) rotateX(-5deg);
+  }
+  &:after{
+    background-color: rgba(255,255, 255,.1);
+    box-shadow: 0 0 2px rgba(255,255, 255,.1);
+  }
+}
