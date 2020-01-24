@@ -117,3 +117,24 @@ $sunsetSize: 400px;
     transform: translateZ(30px) translateX(-80px) translateY(-100px) rotateZ(-10deg) ;
   }
 }
+
+.musical-toast {
+  width: 100px!important;
+  height: 100px!important;
+  line-height: 100px!important;
+  border-radius: 100px!important;
+  div {
+    height: 100px!important;
+    line-height: 100px!important;
+    width: 50px!important;
+    padding: 0!important;
+    &:nth-child(2) {
+      p {
+        line-height: 100px!important;
+        display: block!important;
+        text-align: center;
+        padding: 0!important;
+      }
+    }
+  }
+}

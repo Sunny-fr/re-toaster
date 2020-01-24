@@ -4,7 +4,9 @@ import React, {PureComponent} from 'react'
 import {Provider} from 'react-redux'
 import store from './store'
 import Application from './layout/ApplicationLayout'
-import {ToasterComponent, addToast} from 're-toaster'
+import {ToasterComponent, addToast} from './lib'
+
+
 import {connect} from 'react-redux'
 import Piano from './components/piano/Piano'
 import Title from './layout/components/title/Title'
@@ -16,6 +18,9 @@ const buttonStyle = {
     margin: 3,
     borderRadius: 3,
 }
+
+
+
 
 
 
@@ -36,7 +41,7 @@ class ExampleComponent extends PureComponent {
         this.props.dispatch(addToast({type: 'info', message: 'info message'}))
     }
     toastCustom = () => {
-        this.props.dispatch(addToast({type: 'customToast', icon: 'fa fa-robot', message: 'custom toast message'}))
+        this.props.dispatch(addToast({type: 'customToast', className:'toast-custom', icon: 'fa fa-robot', message: 'custom toast message'}))
     }
 
     rainbow = (fn) => {
@@ -95,6 +100,13 @@ const myCustomTheme = {
             backgroundColor: '#b35f9e',
             right: 100
         },
+        musicalNote: {
+            "fontFamily":
+                "'Corben', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',sans-serif",
+
+            backgroundColor: '#b35f9e',
+            right: 100,
+        },
     }
 }
 
@@ -104,7 +116,6 @@ function App() {
             <Application>
                 <ToasterComponent theme={myCustomTheme}/>
                 <Title>Hello Toasts !</Title>
-
                 <Example/>
                 <Piano/>
             </Application>

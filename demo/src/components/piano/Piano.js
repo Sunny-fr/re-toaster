@@ -20,7 +20,7 @@ function WhiteKey({title='',note = 'C4', duration = '8n'}) {
     const press = () => {
         setState({pressed: true})
         playNote({note, duration})
-        store.dispatch(addToast({type: 'success', message: title, icon: 'fab fa-itunes-note'}))
+        store.dispatch(addToast({type: 'musicalNote', className:'musical-toast', message: title, icon: 'fab fa-itunes-note'}))
     }
     const release = () => setState({pressed: false})
     return (<div
@@ -35,7 +35,7 @@ function BlackKey({title= '', note = 'C4', duration = '8n'}) {
     const press = () => {
         setState({pressed: true})
         playNote({note, duration})
-        store.dispatch(addToast({type: 'warning', message: title, icon: 'fab fa-itunes-note'}))
+        store.dispatch(addToast({type: 'musicalNote',className:'musical-toast', message: title, icon: 'fab fa-itunes-note'}))
     }
     const release = () => setState({pressed: false})
 

@@ -7,20 +7,18 @@ import PropTypes from 'prop-types'
 
 const sortToasts = (a, b) => b.time - a.time
 
-class ToasterComponent extends React.Component {
-    render() {
-        const {toasts, dispatch} = this.props
-        const items = toasts
-            .sort(sortToasts)
-            .map((toast, idx) => (
-                <ToastComponent theme={this.props.theme} dispatch={dispatch} key={toast.id} idx={idx} {...toast}/>)
-            )
-        return (
-            <div>
-                {items}
-            </div>
+
+function ToasterComponent ({toasts, dispatch, theme}) {
+    const items = toasts
+        .sort(sortToasts)
+        .map((toast, idx) => (
+            <ToastComponent theme={theme} dispatch={dispatch} key={toast.id} idx={idx} {...toast}/>)
         )
-    }
+    return (
+        <div>
+            {items}
+        </div>
+    )
 }
 
 ToasterComponent.propTypes = {
