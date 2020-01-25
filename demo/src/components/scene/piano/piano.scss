@@ -20,6 +20,10 @@ $key-margin: 3px;
   display: flex;
   justify-content: center;
   align-items: center;
+  &.keyboard-animated {
+    transition: transform ease-out 250ms;
+  }
+
   &:before{
     z-index: -1;
     position: absolute;
@@ -40,6 +44,7 @@ $key-margin: 3px;
   justify-content: center;
   transform-style: preserve-3d;
   transform: translateZ(30px) translateY(50px);
+  //opacity: .1;
 }
 .piano-key {
   width: $key-width;
@@ -53,6 +58,15 @@ $key-margin: 3px;
   box-shadow: 0 3px 3px rgba(0,0,0,.2);
   transform-origin: 50% 0;
   transform-style: preserve-3d;
+
+  .keyboard-shortcut {
+
+    font-size: 12px;
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    color: rgba(0,0,0,.3)
+  }
 
   &.key-pressed {
     transform: rotateX(-5deg);
@@ -80,7 +94,7 @@ $key-margin: 3px;
   }
 
   &:after{
-    $offset: 3px;
+    $offset: 2px;
     display: block;
     z-index: 1;
     position: absolute;
@@ -90,8 +104,8 @@ $key-margin: 3px;
     bottom: $offset;
     border-radius: 3px;
     content: "";
-    background-color: rgba(0,0,0,.07);
-    box-shadow: 0 0 10px rgba(0,0,0,.1);
+    background-color: rgba(0,0,0,.1);
+    box-shadow: 0 0 5px rgba(0,0,0,.3);
   }
 
 
@@ -107,6 +121,10 @@ $key-margin: 3px;
   height: 130px;
   z-index: 1;
   transform: translateZ(20px);
+
+  .keyboard-shortcut {
+    color: rgba(255,255,255,.3)
+  }
   &.key-pressed {
     transform: translateZ(20px) rotateX(-5deg);
   }

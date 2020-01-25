@@ -8,9 +8,9 @@ import {ToasterComponent, addToast} from './lib'
 
 
 import {connect} from 'react-redux'
-import Piano from './components/piano/Piano'
 import Title from './layout/components/title/Title'
 import CheckBox from './layout/components/checkbox/CheckBox'
+import Scene from './components/scene/Scene'
 
 
 const buttonStyle = {
@@ -117,7 +117,7 @@ function App() {
                 <ToasterComponent theme={myCustomTheme}/>
                 <Title>Hello Toasts !</Title>
                 <Example/>
-                <Piano/>
+                <Scene />
             </Application>
         </Provider>
     )

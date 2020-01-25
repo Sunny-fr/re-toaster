@@ -1,0 +1,245 @@
+$sunsetSize: 400px;
+.background {
+  height: 130%;
+  width: 130%;
+  transform: translateZ(-150px);
+  position: absolute;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, .4);
+  background: linear-gradient(#00baff, #1e78ff);
+}
+
+.sunset {
+  width: $sunsetSize;
+  height: $sunsetSize;
+  background: linear-gradient(#F00, #FC0);
+  border-radius: $sunsetSize / 2;
+  position: absolute;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, .4);
+  transform: translateZ(-50px);
+}
+
+.sea {
+  width: $sunsetSize;
+  height: $sunsetSize;
+  border-radius: $sunsetSize/2;
+  position: absolute;
+  transform: translateZ(-30px);
+
+  background: linear-gradient(to top,
+          rgba(30, 87, 153, 1) 0%, rgba(32, 124, 202, 1) 6%,
+          rgba(41, 137, 216, 0) 6%, rgba(41, 137, 216, 0) 8%,
+          rgba(41, 137, 216, 1) 8%, rgba(125, 185, 232, 1) 14%,
+          rgba(41, 137, 216, 0) 14%, rgba(41, 137, 216, 0) 18%,
+          rgba(41, 137, 216, 1) 18%, rgba(125, 185, 232, 1) 24%,
+          rgba(125, 185, 232, 0) 24%
+  );
+}
+
+
+.leaves {
+  position: absolute;
+  height: 100px;
+  width: 100px;
+  transform: translateX(200px) translateY(100px) translateZ(-30px) rotateZ(10deg);
+
+
+  .leaf {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border-radius: 100% 0;
+    background: #509D56;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .4);
+    transform-origin: 0 100%;
+    transform: rotateZ(-33deg);
+
+    &:nth-child(1) {
+      transform: rotateZ(0deg);
+    }
+
+    &:nth-child(2) {
+      transform: rotateZ(23deg);
+    }
+  }
+
+  &.left {
+
+    transform: translateX(-100px) translateY(80px) translateZ(-30px) rotateZ(-10deg);
+
+    .leaf {
+      transform: rotateZ(-55deg);
+
+      &:nth-child(1) {
+        transform: rotateZ(-84deg);
+      }
+
+      &:nth-child(2) {
+        transform: rotateZ(-110deg);
+      }
+    }
+  }
+}
+
+.bird {
+  position: absolute;
+  transform: translateZ(50px) translateX(100px) translateY(-130px) rotateZ(15deg);
+  filter: blur(1px);
+  width: 80px;
+
+  .wing {
+    position: absolute;
+    width: 50%;
+    height: 20px;
+    border-top: 4px solid black;
+    border-radius: 100%;
+
+    &.left {
+      transform-origin: 100% 50%;
+      animation: wingLeft 0.8s cubic-bezier(0.445, 0.050, 0.550, 0.950) infinite alternate;
+    }
+
+    &.right {
+      right: 0;
+      transform-origin: 0 50%;
+      animation: wingRight 0.8s cubic-bezier(0.445, 0.050, 0.550, 0.950) infinite alternate;
+    }
+  }
+
+  &.left-1 {
+    transform: translateZ(60px) translateX(-100px) translateY(-130px) rotateZ(15deg);
+  }
+
+  &.left-2 {
+    filter: blur(3px);
+    transform: translateZ(30px) translateX(-80px) translateY(-100px) rotateZ(-10deg) scale(.4);
+  }
+}
+
+.buildings {
+  opacity: 0;
+  position: absolute;
+  transform: translateZ(-50px);
+
+  .building {
+    width: 80px;
+    height: $sunsetSize * .6;
+    background: linear-gradient(#fcfffa, #a2997f);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .4);
+    position: absolute;
+    bottom: -$sunsetSize *.3;
+    left: 10px;
+
+    &:nth-child(1) {
+      width: 100px;
+      height: $sunsetSize * .7;
+      left: 70px;
+    }
+  }
+}
+
+.flower {
+  position: absolute;
+  transform: translateZ(0px) translateY(110px) translateX(160px);
+
+  &.left {
+    transform: translateZ(0px) translateY(110px) translateX(-160px);
+  }
+
+  $size: 30px;
+  height: $size;
+  width: $size;
+
+  .heart {
+    width: $size;
+    height: $size;
+    border-radius: $size / 2;
+    //background-color: #FFF;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .4);
+    position: absolute;
+    background: radial-gradient(rgb(248, 168, 29), rgba(251, 223, 147, 1));
+  }
+
+  .petal {
+    width: $size;
+    height: $size;
+    border-radius: $size / 2;
+    background-color: #F00;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .4);
+    position: absolute;
+    transform-origin: 50% -20%;
+    top: $size * .7;
+    @for $i from 1 through 6 {
+      &:nth-child(#{$i}) {
+        transform: rotate(72deg * $i) translateZ($size);
+      }
+    }
+  }
+}
+
+
+.cloud {
+  position: absolute;
+  transform: translateZ(-100px) translateY(-130px) translateX(-160px) scale(.7);
+
+  filter: blur(3px);
+  &.right {
+    filter: blur(1px);
+    transform: translateZ(0) translateY(-130px) translateX(160px) scale(.7);
+  }
+
+  height: 80px;
+  width: 200px;
+
+  .part {
+    background-color: #FFF;
+    border-radius: 80px;
+    height: 70px;
+    width: 200px;
+    position: absolute;
+    top:0;
+    left: 0;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .4);
+
+    &:nth-child(2) {
+      height: 80px;
+      width: 80px;
+      top: -40px;
+      left: 30px;
+      box-shadow: 0 -2px 3px rgba(55, 122, 255, 0);
+    }
+
+    &:nth-child(3) {
+      height: 80px;
+      width: 80px;
+      top: -30px;
+      left: 90px;
+      box-shadow: 0 -4px 3px rgba(55, 122, 255, 0.7);
+    }
+
+  }
+}
+
+
+.musical-toast {
+  width: 100px !important;
+  height: 100px !important;
+  line-height: 100px !important;
+  border-radius: 100px !important;
+
+  div {
+    height: 100px !important;
+    line-height: 100px !important;
+    width: 50px !important;
+    padding: 0 !important;
+
+    &:nth-child(2) {
+      p {
+        line-height: 100px !important;
+        display: block !important;
+        text-align: center;
+        padding: 0 !important;
+      }
+    }
+  }
+}
