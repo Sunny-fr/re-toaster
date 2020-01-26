@@ -6,6 +6,10 @@ const icon_message_commons = {
 const theme = {
     delay: 2500,
     animationDelay: 400,
+    base: {
+        top: 80,
+        increment: 65
+    },
     container: {
         padding: 0,
         backgroundColor: '#333',

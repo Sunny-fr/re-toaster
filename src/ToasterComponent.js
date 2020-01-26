@@ -12,10 +12,11 @@ function ToasterComponent ({toasts, dispatch, theme}) {
     const items = toasts
         .sort(sortToasts)
         .map((toast, idx) => (
-            <ToastComponent theme={theme} dispatch={dispatch} key={toast.id} idx={idx} {...toast}/>)
+            <ToastComponent baseTheme={theme} dispatch={dispatch} key={toast.id} idx={idx} {...toast}/>)
         )
+
     return (
-        <div>
+        <div className="re-toaster">
             {items}
         </div>
     )

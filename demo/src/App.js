@@ -6,23 +6,16 @@ import store from './store'
 import Application from './layout/ApplicationLayout'
 import {ToasterComponent, addToast} from './lib'
 
-
 import {connect} from 'react-redux'
 import Title from './layout/components/title/Title'
 import CheckBox from './layout/components/checkbox/CheckBox'
 import Scene from './components/scene/Scene'
-
 
 const buttonStyle = {
     lineHeight: '40px',
     margin: 3,
     borderRadius: 3,
 }
-
-
-
-
-
 
 class ExampleComponent extends PureComponent {
     state = {
@@ -99,13 +92,6 @@ const myCustomTheme = {
         customToast: {
             backgroundColor: '#b35f9e',
             right: 100
-        },
-        musicalNote: {
-            "fontFamily":
-                "'Corben', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',sans-serif",
-
-            backgroundColor: '#b35f9e',
-            right: 100,
         },
     }
 }

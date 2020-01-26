@@ -1,27 +1,39 @@
 import React from 'react'
 
+import './animations.scss'
 import './assets.scss'
+import './toast.scss'
 
-export function Leaves({position = 'right'}) {
+
+function withAnimation (Wrapped) {
+    return  (props) => (
+        <Wrapped {...props}/>
+        // <div className="animated bounce animation-anchor">
+        //
+        // </div>
+    )
+}
+
+export const Leaves = withAnimation(({position = 'right'}) => {
     return (<div className={`leaves ${position}`}>
         <div className="leaf"/>
         <div className="leaf"/>
         <div className="leaf"/>
     </div>)
-}
+})
 
-export function Background() {
+export const Background = withAnimation(() => {
     return (<div className="background"/>)
-}
+})
 
-export function Buildings() {
+export const Buildings = withAnimation(() => {
     return (<div className="buildings">
         <div className="building"/>
         <div className="building"/>
         <div className="building"/>
     </div>)
-}
-export function Flower({position}) {
+})
+export const Flower = withAnimation(({position = ''}) => {
     return (<div className={`flower ${position}`}>
         <div className="petal"/>
         <div className="petal"/>
@@ -30,29 +42,30 @@ export function Flower({position}) {
         <div className="petal"/>
         <div className="heart"/>
     </div>)
-}
+})
 
-export function Cloud({position}) {
+export const Cloud = withAnimation(({position = ''}) => {
     return (<div className={`cloud ${position}`}>
         <div className="part"/>
         <div className="part"/>
         <div className="part"/>
     </div>)
-}
+})
 
-export function Bird({position}) {
+export const Bird = withAnimation(({position = ''}) => {
     return (
         <div className={`bird ${position}`}>
             <div className={'wing right'}/>
             <div className={'wing left'}/>
         </div>
     )
-}
+})
 
-export function SunSet() {
+
+export const SunSet = withAnimation(() => {
     return (<div className="sunset"/>)
-}
+})
 
-export function Sea() {
+export const Sea = withAnimation(() => {
     return (<div className="sea"/>)
-}
+})

@@ -20,22 +20,32 @@ class ToastComponent extends Component {
     }
 
     getTheme (){
-        return deepmerge(baseTheme, this.props.theme)
+        const base = deepmerge(baseTheme, this.props.baseTheme)
+        if (this.props.theme) return deepmerge(base, this.props.theme)
+        return base
     }
 
-    render() {
+    getStyle(){
         const {status} = this.state
-        const {type, icon, className, idx, message, toBeRemoved} = this.props
         const theme = this.getTheme()
-        const toastClassName = type
-        let iconClass = type && TOAST_ICON_MAP[type] ? TOAST_ICON_MAP[type] : icon
-        let css = (toBeRemoved ? 'fadeOutDown' : 'fadeInUp') + " " + toastClassName + " " + className
-        let style = {
+        const {type, idx} = this.props
+        const top = theme.base.top + (theme.base.increment * idx)
+        return {
             ...theme.container,
-            top: 80 + (65 * idx) + 'px',
+            top: top + 'px',
             ...theme.containerColors[type],
             ...(theme.containerTransitions[status] || {} )
         }
+    }
+
+    render() {
+        const {type, icon, className, message, toBeRemoved} = this.props
+        const theme = this.getTheme()
+        const toastClassName = type
+        const iconClass = type && TOAST_ICON_MAP[type] ? TOAST_ICON_MAP[type] : icon
+        const css = (toBeRemoved ? 'fadeOutDown' : 'fadeInUp') + " " + toastClassName + " " + className
+        const style = this.getStyle()
+
         return (<div className={css} style={style}>
             <div style={{...theme.icon}}>
                 <i className={iconClass}/>

@@ -1,0 +1,36 @@
+
+.musical-toast {
+  /* YEAH IMPORTANTTTTT */
+  $size: 50px;
+  width: $size !important;
+  height: $size !important;
+  line-height: $size !important;
+  border-radius: $size !important;
+  font-family: 'Corben', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif!important;;
+  &.white-key {
+    background-color: #FFF!important;;
+    color: #222!important;;
+  }
+  &.black-key {
+    background-color: #222!important;;
+    color: #FFF!important;;
+  }
+  div {
+    height: $size !important;
+    line-height: $size !important;
+    width: $size !important;
+    padding: 0 !important;
+
+    &:nth-child(1) {
+      display: none;
+    }
+    &:nth-child(2) {
+      p {
+        line-height: $size !important;
+        display: block !important;
+        text-align: center;
+        padding: 0 !important;
+      }
+    }
+  }
+}

@@ -6,16 +6,23 @@ import BlackKey from './BlackKey'
 import WhiteKey from './WhiteKey'
 import {keyBoardKey} from './core/core'
 
-
-class PianoKeyBoard extends React.PureComponent {
+class PianoKeyBoard extends React.Component {
     state = {
         keys: {}
     }
-    render() {
+    getKeys = () => {
         const {keys} = this.state
+        //keeping order, Object values seems to shuffle the order
+        return KEYBOARD_KEYS.filter(i => keys[i.keyChar]).map(item => {
+            return keys[item.keyChar]
+        })
+    }
+    render() {
+        const keys = this.getKeys()
+        if (keys.length < 1) return null
         return (
             <div className="piano-keys">
-                {Object.values(keys).map(key => {
+                {keys.map(key => {
                     const Key = key.tone === 'semi' ? BlackKey : WhiteKey
                     return (
                         <Key {...key} key={key.id}/>
