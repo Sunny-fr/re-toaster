@@ -1,6 +1,18 @@
-$key-width: 40px;
+@import "variables";
+
+
+$ratio: 340 / 500;
+
+$white-key-width: 40px;
 $back-key-width: 30px;
+$white-key-height: 200px;
+$black-key-height: 130px;
 $key-margin: 3px;
+
+
+$break-point: 430px;
+
+
 .piano-wrapper {
   margin: 50px auto;
   padding: 20px;
@@ -9,10 +21,34 @@ $key-margin: 3px;
   transform-style: preserve-3d;
   perspective-origin: 50% 50%;
   justify-content: center;
+
+  @media all and (max-width: $break-point) {
+
+    margin: 0;
+    padding: 0;
+  }
 }
+
 .piano {
-  height: 500px;
-  width: 500px;
+
+
+  height: $scene-height;
+  width: $scene-width;
+
+
+
+  @media all and (min-width: $break-point) {
+
+    height: 500px;
+    width: 500px;
+  }
+  @media all and (max-width: $break-point) {
+
+    transform: none!important;
+  }
+
+
+
   position: relative;
   perspective: 800px;
   perspective-origin: 50% 50%;
@@ -40,6 +76,7 @@ $key-margin: 3px;
   display: inline-block;
 }
 .piano-keys {
+  width: 100%;
   display: flex;
   justify-content: center;
   transform-style: preserve-3d;
@@ -47,11 +84,21 @@ $key-margin: 3px;
   //opacity: .1;
 }
 .piano-key {
-  width: $key-width;
+
+  width: $white-key-width * $ratio;
+  height: $white-key-height * $ratio;
+  margin: $key-margin * $ratio;
+
+
+  @media all and (min-width: $break-point) {
+
+    width: $white-key-width;
+    height: $white-key-height;
+    margin: $key-margin;
+  }
+
   background-color: #FFF;
   border-radius: 3px;
-  height: 200px;
-  margin: $key-margin;
   position: relative;
   cursor: pointer;
   transition: transform ease-out 100ms, box-shadow ease-out 100ms, opacity ease-out 100ms;
@@ -114,14 +161,21 @@ $key-margin: 3px;
   position: relative;
 }
 .black-key {
+
+  height: $black-key-height * $ratio;
+  width: $back-key-width * $ratio;
+  left: calc(#{-($back-key-width * $ratio)/2} - #{($key-margin * $ratio)});
+
+  @media all and (min-width: $break-point) {
+    height: $black-key-height;
+    width: $back-key-width;
+    left: calc(#{-$back-key-width/2} - #{$key-margin});
+  }
+
   position: absolute;
-  width:$back-key-width ;
-  left: (-$back-key-width / 2) - $key-margin;
   background-color: #111;
-  height: 130px;
   z-index: 1;
   transform: translateZ(20px);
-
   .keyboard-shortcut {
     color: rgba(255,255,255,.3)
   }

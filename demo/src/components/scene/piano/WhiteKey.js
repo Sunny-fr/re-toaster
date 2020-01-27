@@ -45,6 +45,9 @@ function WhiteKey({title = '', note = 'C4', keyChar = '', duration = '8n', contr
 
     return (<div
         ref={keyRef}
+        onTouchStart={instrumentAPI.press}
+        onTouchEnd={instrumentAPI.release}
+        onTouchCancel={instrumentAPI.release}
         onMouseDown={instrumentAPI.press}
         onMouseUp={instrumentAPI.release}
         onMouseLeave={instrumentAPI.release}

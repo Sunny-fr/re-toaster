@@ -11,18 +11,19 @@ export const themeFactory = (position) => {
             left: position.x,
             perspective: '800px',
             perspectiveOrigin: '50% 50%',
-            transformStyle: 'preserve-3d'
+            transformStyle: 'preserve-3d',
+            transform: `translateZ(50px) translate(0, 0)`,
         },
         containerTransitions: {
             opening: {
                 opacity: 1,
                 visibility: 'visible',
-                transform: `translateZ(-100px) translate(0, 0)`,
+                transform: `translateZ(50px) translate(0, 0)`,
             },
             closing: {
                 opacity: 0,
                 visibility: 'hidden',
-                transform: `translateZ(-100px) translate(0, -80px)`,
+                transform: `translateZ(50px) translate(0, -80px)`,
             }
         }
     }

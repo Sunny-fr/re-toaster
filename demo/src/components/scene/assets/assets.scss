@@ -1,9 +1,10 @@
-$sunsetSize: 400px;
+$sunsetSize: 80%;
 
 .animation-anchor {
   //display: contents;
   //animation-duration: 2000ms;
 }
+
 .background {
   height: 130%;
   width: 130%;
@@ -18,7 +19,7 @@ $sunsetSize: 400px;
   width: $sunsetSize;
   height: $sunsetSize;
   background: linear-gradient(#F00, #FC0);
-  border-radius: $sunsetSize / 2;
+  border-radius: 500px;
   position: absolute;
   box-shadow: 0 2px 6px rgba(0, 0, 0, .4);
   transform: translateZ(-50px);
@@ -219,7 +220,8 @@ $sunsetSize: 400px;
       width: 80px;
       top: -30px;
       left: 90px;
-      box-shadow: 0 -4px 3px rgba(55, 122, 255, 0.7);
+      //box-shadow: 0 -4px 3px rgba(55, 122, 255, 0.7);
+      box-shadow: 0 -4px 3px rgb(233, 233, 233)
     }
 
   }

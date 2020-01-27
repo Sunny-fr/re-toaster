@@ -4,6 +4,11 @@ body {
     color: #343434;
     padding-top: 60px;
     background-color: #E9E9E9;
+    user-select: none;
+}
+
+.container {
+    padding:0
 }
 
 .animated {

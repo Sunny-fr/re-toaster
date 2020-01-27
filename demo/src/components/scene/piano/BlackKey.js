@@ -38,8 +38,11 @@ function BlackKey({title = '', note = 'C4', keyChar ='', duration = '8n', contro
         }
     }, [pressed])
     return (<div
+        ref={keyRef}
         className={'black-key-placeholder'}>
-        <div ref={keyRef}
+        <div
+             onTouchStart={instrumentAPI.press}
+             onTouchEnd={instrumentAPI.release}
              onMouseDown={instrumentAPI.press}
              onMouseUp={instrumentAPI.release}
              onMouseLeave={instrumentAPI.release}
