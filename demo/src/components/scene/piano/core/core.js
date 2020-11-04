@@ -1,6 +1,6 @@
 import Tone from 'tone'
 
-const INSTRUMENT = 'MonoSynth'
+const INSTRUMENT = 'AMSynth'
 export function playNote({note = 'C4', duration = '8n', callback}) {
     //const synth= new Tone.Synth().toMaster()
     const instrument = new Tone[INSTRUMENT]().toMaster()

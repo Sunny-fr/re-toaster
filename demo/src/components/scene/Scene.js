@@ -31,7 +31,5 @@ class Scene extends PureComponent {
     }
 }
 
-Scene.propTypes = {}
-Scene.defaultProps = {}
 
 export default Scene
